@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Eventos Comunitarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-dark text-white p-3">
+        <h1 class="text-center">Portal de Eventos Comunitarios</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showSection('home')">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="registerLink" onclick="showSection('register')">Registro</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="loginLink" onclick="showSection('login')">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="createEventLink" onclick="showSection('createEvent')">Crear Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="eventsListLink" onclick="showSection('eventsList')">Ver Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="contactLink" onclick="showSection('contact')">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="logoutLink" onclick="logout()">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container mt-4" id="mainContent">
+        <section id="home">
+            <h2>Bienvenido al Portal de Eventos</h2>
+            <p>Descripción del portal y acceso a eventos destacados.</p>
+            <div id="featuredEvents"></div>
+        </section>
+        <section id="login" class="hidden">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" onsubmit="login(event)">
+                <label for="username">Nombre de Usuario:</label>
+                <input type="text" id="username" class="form-control" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" class="form-control" required>
+                <button type="submit" class="btn btn-primary mt-2">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" onclick="showSection('register')">Regístrate aquí</a></p>
+        </section>
+        <section id="register" class="hidden">
+            <h2>Registro</h2>
+            <form id="registerForm" onsubmit="register(event)">
+                <label for="newUsername">Nombre de Usuario:</label>
+                <input type="text" id="newUsername" class="form-control" required>
+                <label for="newPassword">Contraseña:</label>
+                <input type="password" id="newPassword" class="form-control" required>
+                <button type="submit" class="btn btn-primary mt-2">Registrar</button>
+            </form>
+        </section>
+        <section id="createEvent" class="hidden">
+            <h2>Crear Evento</h2>
+            <form id="createEventForm" onsubmit="createEvent(event)">
+                <label for="eventTitle">Título del Evento:</label>
+                <input type="text" id="eventTitle" class="form-control" required>
+                <label for="eventDate">Fecha del Evento:</label>
+                <input type="date" id="eventDate" class="form-control" required>
+                <label for="eventLocation">Ubicación:</label>
+                <input type="text" id="eventLocation" class="form-control" required>
+                <label for="eventDescription">Descripción:</label>
+                <textarea id="eventDescription" class="form-control" required></textarea>
+                <label for="eventImage">Imagen del Evento:</label>
+                <input type="file" id="eventImage" class="form-control" accept="image/*" required>
+                <button type="submit" class="btn btn-primary mt-2">Crear</button>
+            </form>
+        </section>
+        <section id="eventsList" class="hidden">
+            <h2>Eventos Publicados</h2>
+            <div>
+                <label for="searchEvents">Buscar Eventos:</label>
+                <input type="text" id="searchEvents" class="form-control" oninput="filterEvents()">
+            </div>
+            <div id="events" class="mt-3"></div>
+        </section>
+        <section id="contact" class="hidden">
+            <h2>Contacto</h2>
+            <p>Reparto Olivares, Calle B, Puerto Plata, R.D.</p>
+            <p>Teléfono: 809-345-3456</p>
+        </section>
+    </main>
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        <p>Harlyn Alvarez - 100042989</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
